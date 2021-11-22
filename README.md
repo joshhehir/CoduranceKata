@@ -1,2 +1,2 @@
-# Katas
-Repo to store any Katas I work on.
+# CoduranceKata
+Repo to store the Kata I will work on with Codurance.
