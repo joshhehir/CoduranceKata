@@ -1,30 +1,37 @@
 using NUnit.Framework;
-using System.IO;
-using System;
 
 namespace CoduranceTests
 {
-    public class ProgramShould
+    [TestFixture]
+    public class StringCalculatorShould
     {
-        private const string Expected = "Hello World!";
+        StringCalculator calc;
 
         [SetUp]
         public void Setup()
         {
-
+            calc = new StringCalculator();
         }
 
         [Test]
-        public void CheckOutputShouldBeHelloWorld()
+        public void CheckForEmptySum()
         {
-            using (var sw = new StringWriter())
-            {
-                Console.SetOut(sw);
-                Codurance.Program.Main();
+            var result = calc.Add("");
+            Assert.AreEqual(0, result);
+        }
 
-                var result = sw.ToString().Trim();
-                Assert.AreEqual(Expected, result);
-            }
+        [Test]
+        public void ReturnSameNumber()
+        {
+            var result = calc.Add("4");
+            Assert.AreEqual(4, result);
+        }
+
+        [Test]
+        public void ReturnSumOfTwoNumbers()
+        {
+            var result = calc.Add("1,2");
+            Assert.AreEqual(3, result);
         }
     }
 }
